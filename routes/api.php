@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function (Request $request) {
+    return ['message' => 'Hello world!'];
 });
-Route::get('/test', function (Request $request) {
-    return 'hello test';
-});
+Route::post('/auth', 'Auth\AuthenticateController@authenticate');
