@@ -16,4 +16,5 @@ use Illuminate\Http\Request;
 Route::get('/', function (Request $request) {
     return ['message' => 'Hello world!'];
 });
-Route::post('/auth', 'Auth\AuthenticateController@authenticate');
+Route::post('/auth', 'AuthenticateController@authenticate');
+Route::middleware('jwt.auth')->resource('/user', 'UserController');
