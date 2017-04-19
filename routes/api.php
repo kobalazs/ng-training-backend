@@ -17,4 +17,6 @@ Route::get('/', function (Request $request) {
     return ['message' => 'Hello world!'];
 });
 Route::post('/auth', 'AuthenticateController@authenticate');
+Route::post('/user/register', 'UserController@store');
+
 Route::middleware('jwt.auth')->resource('/user', 'UserController');
