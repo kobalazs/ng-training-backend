@@ -13,10 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function (Request $request) {
-    return ['message' => 'Hello world!'];
-});
-Route::post('/auth', 'AuthenticateController@authenticate');
-Route::post('/user/register', 'UserController@store');
-
-Route::middleware('jwt.auth')->resource('/user', 'UserController');
+Route::group(
+    ['middleware' => ['cors']],
+    function () {
+        Route::get('/', function (Request $request) {
+            return ['message' => 'Hello world!'];
+        });
+        Route::post('/auth', 'AuthenticateController@authenticate');
+        Route::post('/user/register', 'UserController@store');
+    }
+);
+Route::group(
+    ['middleware' => ['cors', 'jwt.auth']],
+    function () {
+        Route::resource('/user', 'UserController');
+    }
+);
