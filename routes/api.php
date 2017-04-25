@@ -27,5 +27,6 @@ Route::group(
     ['middleware' => ['cors', 'jwt.auth']],
     function () {
         Route::resource('/user', 'UserController');
+        Route::resource('/task', 'TaskController');
     }
 );
