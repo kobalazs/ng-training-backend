@@ -17,12 +17,13 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name');
-            $table->string('color');
-            $table->string('position');
+            $table->string('color')->nullable();
+            $table->string('position')->default(0);
             $table->boolean('is_done')->default(false);
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unique(['name', 'user_id']);
         });
     }
 
