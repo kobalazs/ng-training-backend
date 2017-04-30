@@ -18,7 +18,9 @@ class TasksTableSeeder extends Seeder
             'name' => 'Test Task',
             'color' => 'white',
             'position' => 0,
-            'is_done' => false
+            'is_done' => false,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ]);
     }
 }
