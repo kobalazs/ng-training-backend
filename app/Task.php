@@ -25,4 +25,9 @@ class Task extends Model
         'user_id'
     ];
 
+    protected $casts = [
+        'position' => 'integer',
+        'is_done' => 'boolean'
+    ];
+
 }
