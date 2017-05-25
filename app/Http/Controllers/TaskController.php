@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return Task::where('user_id', '=', Auth::user()->id)->get();
+        return Task::where('user_id', '=', Auth::user()->id)->orderBy('position', 'asc')->orderBy('created_at', 'asc')->get();
     }
 
     /**
