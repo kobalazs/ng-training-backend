@@ -54,12 +54,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $attributes = $request->all();
+        if (isset($request['password'])) {
+            $attributes['password'] = bcrypt($attributes['password']);
+        }
         $user = User::findOrFail($id);
-        $user->fill([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        $user->fill($attributes);
         $user->saveOrFail();
         return $user;
     }
